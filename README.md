@@ -11,7 +11,7 @@ ETL pipeline for air quality analysis with OpenAQ data, using PySpark, pandas, G
 - Plotly
 
 ## 📁 Project Structure
-
+```
 etl-air-quality-openaq/
 ├── data/
 │ ├── raw/
@@ -21,7 +21,7 @@ etl-air-quality-openaq/
 ├── visualizations/
 ├── requirements.txt
 └── README.md
-
+```
 ## 📌 Steps
 
 1. Data Extraction
