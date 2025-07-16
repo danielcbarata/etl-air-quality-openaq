@@ -8,8 +8,6 @@
 [![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=flat-square&logo=docker&logoColor=white)](https://www.docker.com/)
 [![Apache Airflow](https://img.shields.io/badge/Apache_Airflow-%2300B0B9.svg?style=flat-square&logo=apache-airflow&logoColor=white)](https://airflow.apache.org/)
 
-# ETL Air Quality - OpenAQ
-
 ETL pipeline for air quality analysis with OpenAQ data, using PySpark, pandas, GCP, Docker, Airflow and visualization with Plotly.
 
 ## ✅ Features
