@@ -2,3 +2,4 @@ requests
 google-cloud-storage
 pandas
 python-dotenv
+pyspark
