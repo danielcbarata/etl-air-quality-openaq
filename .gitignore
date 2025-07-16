@@ -208,3 +208,8 @@ __marimo__/
 
 # Evitar subir credenciais e dados locais
 credentials/
+scripts/a.py
+venv/
+__pycache__/
+*.pyc
+*.ipynb_checkpoints
