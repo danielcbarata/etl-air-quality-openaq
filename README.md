@@ -15,8 +15,8 @@ ETL pipeline for air quality analysis with OpenAQ data, using PySpark, pandas, G
 etl-air-quality-openaq/
 ├── data/
 │ ├── raw/
+│ └── parquet/
 │ └── processed/
-├── notebooks/
 ├── scripts/
 ├── visualizations/
 ├── requirements.txt
@@ -28,3 +28,9 @@ etl-air-quality-openaq/
 2. Transformation (Spark & pandas)
 3. Load to BigQuery
 4. Analysis & Visualization
+
+## Visualizations
+
+Interactive Plotly graphs are generated and saved as `.html` files in the `visualizations/` folder.
+
+To view the charts, please download the `.html` file and open it with your web browser, as GitHub does not render HTML files directly.

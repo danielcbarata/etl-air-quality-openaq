@@ -213,3 +213,8 @@ venv/
 __pycache__/
 *.pyc
 *.ipynb_checkpoints
+
+# Airflow
+airflow.cfg
+logs/
+__pycache__/
