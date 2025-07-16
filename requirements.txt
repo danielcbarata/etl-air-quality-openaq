@@ -3,3 +3,6 @@ google-cloud-storage
 pandas
 python-dotenv
 pyspark
+google-cloud-bigquery
+pyarrow
+pandas-gbq>=0.26.1
