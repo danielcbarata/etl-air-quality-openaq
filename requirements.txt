@@ -4,5 +4,9 @@ pandas
 python-dotenv
 pyspark
 google-cloud-bigquery
+google-cloud-bigquery-storage
 pyarrow
 pandas-gbq>=0.26.1
+plotly
+dash
+nbformat
