@@ -125,3 +125,13 @@ docker-compose up --build
 ## 🪪 License
 
 This project is licensed under the [MIT License](LICENSE).
+
+# ETL Air Quality - OpenAQ
+
+[![GitHub issues](https://img.shields.io/github/issues/danielcbarata/etl-air-quality-openaq?style=flat-square)](https://github.com/danielcbarata/etl-air-quality-openaq/issues)
+[![GitHub forks](https://img.shields.io/github/forks/danielcbarata/etl-air-quality-openaq?style=flat-square)](https://github.com/danielcbarata/etl-air-quality-openaq/network/members)
+[![GitHub stars](https://img.shields.io/github/stars/danielcbarata/etl-air-quality-openaq?style=flat-square)](https://github.com/danielcbarata/etl-air-quality-openaq/stargazers)
+[![GitHub license](https://img.shields.io/github/license/danielcbarata/etl-air-quality-openaq?style=flat-square)](https://github.com/danielcbarata/etl-air-quality-openaq/blob/main/LICENSE)
+[![Python version](https://img.shields.io/badge/python-3.10%2B-blue?style=flat-square)](https://www.python.org/downloads/release/python-310/)
+[![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=flat-square&logo=docker&logoColor=white)](https://www.docker.com/)
+[![Apache Airflow](https://img.shields.io/badge/Apache_Airflow-%2300B0B9.svg?style=flat-square&logo=apache-airflow&logoColor=white)](https://airflow.apache.org/)
