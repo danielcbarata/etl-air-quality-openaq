@@ -2,17 +2,44 @@ from pyspark.sql import SparkSession
 from pyspark.sql.functions import col, to_timestamp
 import json
 import os
+from pyspark.sql.types import StructType, StructField, StringType, DoubleType, StructType
 
-RAW_JSON_PATH = "data/raw/openaq_daily_23534.json"
-PARQUET_OUTPUT_PATH = "data/parquet/openaq_daily_23534.parquet"
+BASE_DIR = os.environ.get("DATA_PATH", os.path.abspath("."))
+
+RAW_JSON_PATH = os.path.join(BASE_DIR, "data", "raw", "openaq_daily_23534.json")
+PARQUET_OUTPUT_PATH = os.path.join(BASE_DIR, "data", "parquet", "openaq_daily_23534.parquet")
 
 def main():
-    # Cria sessão Spark
+    
+    schema = StructType([
+        StructField("value", DoubleType(), True),
+        StructField("parameter", StructType([
+            StructField("name", StringType(), True),
+            StructField("units", StringType(), True),
+        ])),
+        StructField("period", StructType([
+            StructField("datetimeFrom", StructType([
+                StructField("utc", StringType(), True),
+            ])),
+            StructField("datetimeTo", StructType([
+                StructField("utc", StringType(), True),
+            ])),
+        ])),
+        StructField("summary", StructType([
+            StructField("min", DoubleType(), True),
+            StructField("max", DoubleType(), True),
+            StructField("avg", DoubleType(), True),
+            StructField("sd", DoubleType(), True),
+        ])),
+        StructField("coverage", StructType([
+            StructField("percentComplete", DoubleType(), True),
+        ])),
+    ])
     spark = SparkSession.builder \
         .appName("Transform OpenAQ JSON") \
         .getOrCreate()
 
-    # Carrega JSON bruto
+    # Carrega JSON
     with open(RAW_JSON_PATH) as f:
         data = json.load(f)
 
@@ -20,10 +47,9 @@ def main():
     if not records:
         raise ValueError("Nenhum dado encontrado em 'results'")
 
-    # Cria DataFrame Spark
-    df = spark.read.json(spark.sparkContext.parallelize([json.dumps(r) for r in records]))
-
-    # Seleciona e renomeia colunas (igual pandas)
+    rdd = spark.sparkContext.parallelize([json.dumps(r) for r in records])
+    df = spark.read.schema(schema).json(rdd)
+    # Seleciona e renomeia colunas
     selected_df = df.select(
         col("value"),
         col("parameter.name").alias("parameter_name"),

@@ -2,9 +2,9 @@ import json
 import pandas as pd
 import os
 
-# Caminhos
-RAW_JSON_PATH = "data/raw/openaq_daily_23534.json"
-PROCESSED_CSV_PATH = "data/processed/openaq_daily_23534_processed.csv"
+BASE_DIR = os.environ.get("DATA_PATH", os.path.abspath("."))
+RAW_JSON_PATH = os.path.join(BASE_DIR, "data", "raw", "openaq_daily_23534.json")
+PROCESSED_CSV_PATH = os.path.join(BASE_DIR, "data", "processed", "openaq_daily_23534_processed.csv")
 
 def load_json(path):
     with open(path, "r") as f:

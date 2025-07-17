@@ -2,8 +2,8 @@ from google.cloud import bigquery
 import pandas as pd
 import os
 
-# Caminhos
-PARQUET_PATH = "data/parquet/openaq_daily_23534.parquet"
+BASE_DIR = os.environ.get("DATA_PATH", os.path.abspath("."))
+PARQUET_PATH = os.path.join(BASE_DIR, "data", "parquet", "openaq_daily_23534.parquet")
 GCP_PROJECT = "etl-air-quality-project" 
 DATASET_ID = "air_quality"
 TABLE_ID = "daily_measurements"

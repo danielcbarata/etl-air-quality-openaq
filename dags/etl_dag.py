@@ -23,17 +23,28 @@ with DAG(
     transform_pandas = BashOperator(
         task_id='transform_pandas',
         bash_command='python /opt/airflow/scripts/transform_pandas.py',
+        env={"DATA_PATH": "/opt/airflow"},
     )
 
     transform_spark = BashOperator(
         task_id='transform_spark',
         bash_command='python /opt/airflow/scripts/transform_spark.py',
+        env={"DATA_PATH": "/opt/airflow",
+             "JAVA_HOME": "/usr/lib/jvm/java-11-openjdk-amd64",
+             "PYSPARK_PYTHON": "/usr/local/bin/python3.8",
+             "PYSPARK_DRIVER_PYTHON": "/usr/local/bin/python3.8",
+             },
     )
 
     load_bq = BashOperator(
-        task_id='load_bigquery',
-        bash_command='python /opt/airflow/scripts/load_to_bigquery.py',
-    )
+    task_id='load_bigquery',
+    bash_command='python /opt/airflow/scripts/load_to_bigquery.py',
+    env={
+        "DATA_PATH": "/opt/airflow",
+        "GOOGLE_APPLICATION_CREDENTIALS": "/opt/airflow/credentials/etl-air-quality-project-1f3a33d4345d.json",
+        "GCP_PROJECT": "etl-air-quality-project"
+    },
+)
 
     visualize = BashOperator(
         task_id='visualize_plotly',

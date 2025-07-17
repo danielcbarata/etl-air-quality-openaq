@@ -11,7 +11,7 @@ services:
       - postgres-db-volume:/var/lib/postgresql/data
 
   airflow:
-    image: apache/airflow:2.7.1
+    image: etl-airflow-custom:latest
     env_file:
       - .env
     depends_on:
@@ -25,11 +25,18 @@ services:
       AIRFLOW__API__AUTH_BACKENDS: airflow.api.auth.backend.basic_auth
       AIRFLOW__WEBSERVER__RBAC: "True"
       _PIP_ADDITIONAL_REQUIREMENTS: google-cloud-bigquery google-cloud-storage pyspark pandas plotly
+      GOOGLE_APPLICATION_CREDENTIALS: /opt/airflow/credentials/etl-air-quality-project-1f3a33d4345d.json
+      GCP_PROJECT: etl-air-quality-project
+      DATA_PATH: /opt/airflow
+      JAVA_HOME: /usr/lib/jvm/java-11-openjdk-amd64
+      PYSPARK_PYTHON: /usr/local/bin/python3.8
+      PYSPARK_DRIVER_PYTHON: /usr/local/bin/python3.8
     volumes:
       - ./dags:/opt/airflow/dags
       - ./scripts:/opt/airflow/scripts
       - ./data:/opt/airflow/data
       - ./visualizations:/opt/airflow/visualizations
+      - ./credentials/etl-air-quality-project-1f3a33d4345d.json:/opt/airflow/credentials/etl-air-quality-project-1f3a33d4345d.json
     ports:
       - "8080:8080"
     command: >
