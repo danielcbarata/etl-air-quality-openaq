@@ -1,0 +1,28 @@
+.
+├── LICENSE
+├── README.md
+├── artifacts
+├── dags
+│   └── etl_dag.py
+├── data
+│   ├── parquet
+│   │   └── openaq_daily_23534.parquet
+│   ├── processed
+│   │   └── openaq_daily_23534_processed.csv
+│   └── raw
+│       └── openaq_daily_23534.json
+├── docker-compose.yaml
+├── dockerfile
+├── requirements.txt
+├── scripts
+│   ├── a.py
+│   ├── extract_data.py
+│   ├── load_to_bigquery.py
+│   ├── transform_pandas.py
+│   └── transform_spark.py
+├── structure.txt
+└── visualizations
+    ├── bq_plotly.py
+    └── pm25_avg.html
+
+10 directories, 16 files

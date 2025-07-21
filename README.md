@@ -36,26 +36,31 @@ ETL pipeline for air quality analysis with OpenAQ data, using PySpark, pandas, G
 
 ```
 etl-air-quality-openaq/
-├── data/
-│   ├── raw/          # Raw JSON data
-│   ├── parquet/      # Converted Parquet files
-│   └── processed/    # Cleaned/processed datasets
-├── dags/
-│   └── etl_dag.py    # Airflow DAG definition
-├── scripts/          # ETL scripts
-│   ├── extract_data.py
-│   ├── load_to_bigquery.py
-│   ├── transform_pandas.py
-│   ├── transform_spark.py
-│   └── .env.example  # Example of OpenAQ API key
-├── visualizations/   # Plotly HTML files
-│   ├── bq_plotly.py
-│   └── pm25_avg.html
-├── .env.example      # Example with Airflow secrets (FERNET_KEY)
+├── LICENSE
+├── README.md
+├── artifacts
+├── dags
+│   └── etl_dag.py
+├── data
+│   ├── parquet
+│   │   └── openaq_daily_23534.parquet
+│   ├── processed
+│   │   └── openaq_daily_23534_processed.csv
+│   └── raw
+│       └── openaq_daily_23534.json
 ├── docker-compose.yaml
-├── Dockerfile
+├── dockerfile
 ├── requirements.txt
-└── README.md
+├── scripts
+│   ├── a.py
+│   ├── extract_data.py
+│   ├── load_to_bigquery.py
+│   ├── transform_pandas.py
+│   └── transform_spark.py
+├── structure.txt
+└── visualizations
+    ├── bq_plotly.py
+    └── pm25_avg.html
 ```
 
 ## 📌 Steps
